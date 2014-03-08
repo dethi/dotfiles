@@ -7,7 +7,7 @@
 # <manuel>
 #
 #
-# Copyright (C) 2012 Deutsch Thibault <thibault.deutsch@gmail.com>
+# Copyright (C) 2014 Deutsch Thibault <thibault.deutsch@gmail.com>
 #
 # [This file is part of <app>.]
 #
@@ -29,7 +29,7 @@
 __APPNAME__ = "<app>"
 __VERSION__ = "0.X.0"
 __AUTHOR__ = "Deutsch Thibault <thibault.deutsch@gmail.com>"
-__WEB__ = "http://www.thionnux.fr/"
+__WEB__ = "http://www.dethi.fr"
 __LICENCE__ = "GPL"
 
 
