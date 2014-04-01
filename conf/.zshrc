@@ -73,5 +73,5 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=$PATH:/opt/local/libexec/ocaml3
 
 # Alias
-alias python3="python3.3"
+alias python3="python3.4"
 alias avenv="source ./venv/bin/activate"
