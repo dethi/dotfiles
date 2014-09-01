@@ -75,3 +75,5 @@ export PATH=$PATH:/opt/local/libexec/ocaml3
 # Alias
 alias python3="python3.4"
 alias avenv="source ./venv/bin/activate"
+alias mgzip="tar --use-compress-program=pigz -cvf"
+alias mbzip2="tar --use-compress-program=pbzip2 -cvf"
