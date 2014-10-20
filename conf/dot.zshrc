@@ -71,6 +71,8 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # Ocaml 3.x
 export PATH=$PATH:/opt/local/libexec/ocaml3
+# Dropbox scripts
+export PATH=$PATH:$HOME/Dropbox/Scripts
 
 # Alias
 alias python3="python3.4"
