@@ -22,43 +22,46 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from __future__ import print_function
 import os
 import sys
-import atexit
 import time
 import requests
+import smtplib
+from email.mime.text import MIMEText
 
-REFRESH_TIME = 15 * 60 # 15 min
+SMTP = 'localhost'
+SENDER = 'script@dethi.ovh'
+RECEIVERS = 'thibault.deutsch@epita.fr'
+
 DATA_FILE = os.path.expanduser("~/.wiki-prog-revid")
 API_URL = "http://wiki-prog.infoprepa.epita.fr/api.php? \
     action=query&list=recentchanges&rclimit=1&format=json"
 
 def main():
-    print("=== Start wiki_prog_notif ===")
     oldrevid = read_id()
-
-    while 1:
-        json = api_request_json(API_URL)
-        if json is not None:
-            revid = json['query']['recentchanges'][0]['revid']
-            if revid > oldrevid:
-                oldrevid = revid
-                write_id(revid)
-                t = json['query']['recentchanges'][0]['timestamp']
-                t = t.replace('T', ' ')
-                t = t.replace('Z', '')
-                print("[NEW] {} => {}".format(revid, t))
-                beep()
-
-        try:
-            time.sleep(REFRESH_TIME)
-        except (KeyboardInterrupt, SystemExit):
-            print("[INFO] Received keyboard interrupt", file=sys.stderr)
-            sys.exit(0)
-
-def beep():
-    sys.stdout.write('\a')
-    sys.stdout.flush()
+    json = api_request_json(API_URL)
+    json = json['query']['recentchanges'][0]
+    
+    if json is None:
+        return
+        
+    revid = json['revid']
+    if revid > oldrevid:
+        oldrevid = revid
+        write_id(revid)
+        t = json['timestamp']
+        t = t.replace('T', ' ')
+        t = t.replace('Z', '')
+        
+        msg = MIMEText('{}\nhttp://wiki-prog.infoprepa.epita.fr/'.format(
+            json['title']))
+        msg['To'] = RECEIVERS
+        msg['From'] = SENDER
+        msg['Subject'] = '[wiki-prog] {}'.format(json['type'])
+        
+        send_mail(msg.as_string())
+        print("[NEW] {} => {}".format(revid, t))
 
 def api_request_json(url):
     try:
@@ -66,6 +69,15 @@ def api_request_json(url):
         return r.json()
     except:
         print("[ERROR] Network issue", file=sys.stderr)
+
+def send_mail(msg, sender=SENDER, receivers=RECEIVERS, smtp=SMTP):
+    try:
+        conn = smtplib.SMTP(smtp)
+        conn.sendmail(sender, receivers, msg)
+        conn.quit()
+        print("[INFO] Successfully sent email")
+    except:
+        print("[ERROR] Unable to send email", file=sys.stderr)
 
 def read_id():
     data = None
@@ -80,10 +92,6 @@ def read_id():
 def write_id(revid):
     with open(DATA_FILE, 'w') as f:
         f.write(str(revid))
-
-@atexit.register
-def goodbye():
-    print("=== Goodbye ! ===")
 
 if __name__ == '__main__':
     main()
