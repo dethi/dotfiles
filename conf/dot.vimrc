@@ -71,6 +71,12 @@ set nobackup
 set nowb
 set noswapfile
 
+try
+    set undodir=~/.vim/undo
+    set undofile
+catch
+endtry
+
 " Set red line
 set cc=80,100
 
