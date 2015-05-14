@@ -14,9 +14,10 @@ Plugin 'bling/vim-airline' " Bottom bar
 Plugin 'tpope/vim-fugitive' " Git
 Plugin 'bling/vim-bufferline' " Buffer :ls
 
-" Javascript syntax and autoindent
+" Javascript syntax, autoindent, autocompletation
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
+Plugin 'marijnh/tern_for_vim'
 
 Plugin 'Raimondi/delimitMate' " Autoclose delimiter
 Plugin 'Syntastic' " Syntax checking
