@@ -45,6 +45,9 @@ set background=dark
 set t_Co=256 " 256 Color
 colorscheme distinguished
 
+" Highlight the current line
+set cursorline
+
 " A buffer can be hidden
 set hidden
 
