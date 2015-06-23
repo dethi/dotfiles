@@ -23,6 +23,8 @@ Plugin 'Raimondi/delimitMate' " Autoclose delimiter
 Plugin 'Syntastic' " Syntax checking
 Plugin 'Valloric/YouCompleteMe' " Autocompletation
 
+Plugin 'mattn/emmet-vim' " Zen coding
+
 call vundle#end()
 filetype plugin indent on
 
@@ -34,6 +36,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Remap Emmet leader
+let g:user_emmet_leader_key = '<C-E>'
+
+" Enable Emmet only for HTML/CSS
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 " =======================================
 " Configurations
@@ -85,6 +94,8 @@ set expandtab
 set smarttab
 set shiftwidth=4
 set tabstop=4
+
+autocmd FileType html,css,js,rb :setlocal sw=2 ts=2
 
 set ai " Auto indent
 set si " Smart indent
