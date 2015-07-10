@@ -24,6 +24,7 @@ Plugin 'Syntastic' " Syntax checking
 Plugin 'Valloric/YouCompleteMe' " Autocompletation
 
 Plugin 'mattn/emmet-vim' " Zen coding
+Plugin 'airblade/vim-gitgutter' " +/- for Git
 
 call vundle#end()
 filetype plugin indent on
@@ -95,7 +96,7 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-autocmd FileType html,css,js,rb :setlocal sw=2 ts=2
+autocmd FileType html,css,js,rb,yaml :setlocal sw=2 ts=2
 
 set ai " Auto indent
 set si " Smart indent
