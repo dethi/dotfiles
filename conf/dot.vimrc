@@ -184,13 +184,17 @@ set laststatus=2
 map 0 ^
 
 " Map <space> to search
-map <space> /
+nmap <space> /
 
 " Switch buffer
-map <S-Tab> :bnext<cr>
+nmap <S-Tab> :bnext<cr>
 
 " Opens a new tab with the current buffer's path
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/<cr>
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Indent/Unindent in visual mode
+vmap <Tab> >
+vmap <S-Tab> <
