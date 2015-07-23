@@ -46,19 +46,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " Disable YCM for Ruby
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'pandoc' : 1,
-      \ 'infolog' : 1,
-      \ 'mail' : 1,
-      \ 'ruby': 1
-      \}
+let g:ycm_filetype_specific_completion_to_disable = {'ruby': 1}
 
 " Remap Emmet leader
 let g:user_emmet_leader_key = '<C-E>'
