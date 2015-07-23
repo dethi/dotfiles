@@ -1,3 +1,5 @@
+set shell=$SHELL
+
 " =======================================
 " Plugins
 " =======================================
@@ -20,8 +22,15 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'marijnh/tern_for_vim'
 
 Plugin 'Raimondi/delimitMate' " Autoclose delimiter
+
 Plugin 'Syntastic' " Syntax checking
+" Your need to install flake8 for Python support
+
 Plugin 'Valloric/YouCompleteMe' " Autocompletation
+" You need to install CMake and then in the plugin folder:
+" ./install.sh --clang-completer --gocode-completer
+" If you use RVM, run `rvm use system` before installing YCM.
+" Explication here: https://goo.gl/27bpXb.
 
 Plugin 'mattn/emmet-vim' " Zen coding
 Plugin 'airblade/vim-gitgutter' " +/- for Git
