@@ -15,7 +15,6 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin # Go
 export PATH=$PATH:$HOME/.rvm/bin # RVM
 
 # Alias
-alias vim="env -u GEM_PATH -u GEM_HOME vim" # fix Vim+YCM+RVM
 alias avenv="source ./env/bin/activate"
 alias mgzip="tar --use-compress-program=pigz -cvf"
 alias mbzip2="tar --use-compress-program=pbzip2 -cvf"

@@ -29,8 +29,6 @@ Plugin 'Syntastic' " Syntax checking
 Plugin 'Valloric/YouCompleteMe' " Autocompletation
 " You need to install CMake and then in the plugin folder:
 " ./install.sh --clang-completer --gocode-completer
-" If you use RVM, run `rvm use system` before installing YCM.
-" Explication here: https://goo.gl/27bpXb.
 
 Plugin 'mattn/emmet-vim' " Zen coding
 Plugin 'airblade/vim-gitgutter' " +/- for Git
@@ -46,6 +44,21 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Disable YCM for Ruby
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1,
+      \ 'ruby': 1
+      \}
 
 " Remap Emmet leader
 let g:user_emmet_leader_key = '<C-E>'
@@ -105,7 +118,7 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-autocmd FileType html,css,js,rb,yaml :setlocal sw=2 ts=2
+autocmd FileType html,css,js,ruby,yaml :setlocal sw=2 ts=2
 
 set ai " Auto indent
 set si " Smart indent
