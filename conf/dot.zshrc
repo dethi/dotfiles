@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="dethi"
-plugins=(git osx brew extract jump)
+plugins=(git osx brew extract jump docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
