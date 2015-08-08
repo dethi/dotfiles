@@ -18,6 +18,7 @@ export PATH=$PATH:$HOME/.rvm/bin # RVM
 alias avenv="source ./env/bin/activate"
 alias mgzip="tar --use-compress-program=pigz -cvf"
 alias mbzip2="tar --use-compress-program=pbzip2 -cvf"
+alias rmpyc="find . -type f -and -name \"*.pyc\" -exec rm -- {} +"
 
 # Env file
 if [ -f $HOME/.env ]; then
