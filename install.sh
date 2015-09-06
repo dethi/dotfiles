@@ -28,7 +28,7 @@ else
         python-dev build-essential
 
     # PIP
-    wget https://bootstrap.pypa.io/get-pip.py -O - | python
+    wget https://bootstrap.pypa.io/get-pip.py -O - | sudo python
 fi
 
 mkdir -p ~/Documents/Git
