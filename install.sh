@@ -25,7 +25,7 @@ else
     sudo apt-get update
     sudo apt-get upgrade -y
     sudo apt-get install -y curl git zsh vim golang python \
-        python-dev-all build-essential
+        python-dev build-essential
 
     # PIP
     wget https://bootstrap.pypa.io/get-pip.py -O - | python
