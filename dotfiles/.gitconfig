@@ -1,0 +1,10 @@
+[user]
+	name = Thibault Deutsch
+	email = thibault.deutsch@gmail.com
+[core]
+	excludesfile = /Users/tinux/.gitignore_global
+	editor = vim
+[push]
+	default = matching
+[color]
+	ui = auto
