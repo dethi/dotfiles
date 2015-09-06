@@ -58,18 +58,18 @@ sh $TMP
 rm -f ~/.zshrc
 
 echo "Generate links..."
-ln -s "$SCRIPTPATH/dotfiles/.gitconfig" ~/.gitconfig
-ln -s "$SCRIPTPATH/dotfiles/.gitignore_global" ~/.gitignore_global
-ln -s "$SCRIPTPATH/dotfiles/.vimrc" ~/.vimrc
-ln -s "$SCRIPTPATH/dotfiles/.zprofile" ~/.zprofile
-ln -s "$SCRIPTPATH/dotfiles/.zshrc" ~/.zshrc
+ln "$SCRIPTPATH/dotfiles/.gitconfig" ~/.gitconfig
+ln "$SCRIPTPATH/dotfiles/.gitignore_global" ~/.gitignore_global
+ln "$SCRIPTPATH/dotfiles/.vimrc" ~/.vimrc
+ln "$SCRIPTPATH/dotfiles/.zprofile" ~/.zprofile
+ln "$SCRIPTPATH/dotfiles/.zshrc" ~/.zshrc
 
 mkdir -p ~/.vim/colors
-ln -s "$SCRIPTPATH/dotfiles/.vim/colors/distinguished.vim" \
+ln "$SCRIPTPATH/dotfiles/.vim/colors/distinguished.vim" \
     ~/.vim/colors/distinguished.vim
 
 mkdir -p ~/.oh-my-zsh/themes
-ln -s "$SCRIPTPATH/.oh-my-zsh/themes/dethi.zsh-theme" \
+ln "$SCRIPTPATH/.oh-my-zsh/themes/dethi.zsh-theme" \
     ~/.oh-my-zsh/themes/dethi.zsh-theme
 
 cecho "Install Vundle..."
