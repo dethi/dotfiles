@@ -24,8 +24,12 @@ else
 
     sudo apt-get update
     sudo apt-get upgrade
-    sudo apt-get install git zsh vim go python
+    sudo apt-get install curl git zsh vim go python python-dev python-pip \
+        build-essential
 fi
+
+mkdir -p ~/Documents/Git
+git clone git@github.com:dethi/all.git ~/Documents/Git/all
 
 pip install --upgrade pip setuptools
 pip install --upgrade flake8 virtualenv
