@@ -23,9 +23,9 @@ else
     echo "Setup Linux configuration..."
 
     sudo apt-get update
-    sudo apt-get upgrade
-    sudo apt-get install curl git zsh vim go python python-dev python-pip \
-        build-essential
+    sudo apt-get upgrade -y
+    sudo apt-get install -y curl git zsh vim golang python python-dev \
+        python-pip build-essential
 fi
 
 mkdir -p ~/Documents/Git
