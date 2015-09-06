@@ -11,7 +11,7 @@ OHMYZSH="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
 # Ask for the sudo password
 sudo echo "Thanks."
 
-if [[ uname -eq "Darwin" ]]; then
+if [ $(uname) = "Darwin" ]; then
     echo "Setup Mac installation..."
 
     # Homebrew
@@ -24,8 +24,11 @@ else
 
     sudo apt-get update
     sudo apt-get upgrade -y
-    sudo apt-get install -y curl git zsh vim golang python python-dev \
-        python-pip build-essential
+    sudo apt-get install -y curl git zsh vim golang python \
+        python-dev-all build-essential
+
+    # PIP
+    wget https://bootstrap.pypa.io/get-pip.py -O - | python
 fi
 
 mkdir -p ~/Documents/Git
