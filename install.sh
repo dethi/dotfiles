@@ -2,13 +2,11 @@
 
 set -e
 
-SCRIPT=$(readlink -f "$0")
-SCRIPTPATH=$(dirname "$SCRIPT")
-
+SCRIPTPATH="~/Documents/Git/all"
 HOMEBREW="https://raw.githubusercontent.com/Homebrew/install/master/install"
 OHMYZSH="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
 
-function cecho() {
+cecho() {
 	# Colorized echo
     printf "\e[0;32m%s\e[0m\n" "$1"
 }
@@ -41,11 +39,11 @@ sudo pip install --upgrade flake8 virtualenv
 
 cecho "Clone dotfiles repository..."
 mkdir -p ~/Documents/Git
-git clone https://github.com/dethi/all.git ~/Documents/Git/all
+git clone https://github.com/dethi/all.git $SCRIPTPATH
 (
     # Little hack to clone the repository without my SSH key and then
     # reset origin to use SSH because I hate writing my username/password
-    cd ~/Documents/Git/all
+    cd $SCRIPTPATH
     git remote set-url origin git@github.com:dethi/all.git
 )
 
