@@ -3,6 +3,7 @@
 set -e
 
 SCRIPTPATH="~/Documents/Git/all"
+GETPIP="https://bootstrap.pypa.io/get-pip.py"
 HOMEBREW="https://raw.githubusercontent.com/Homebrew/install/master/install"
 OHMYZSH="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
 
@@ -12,7 +13,7 @@ cecho() {
 }
 
 # Ask for the sudo password
-sudo cecho "Thanks."
+sudo echo "Thanks."
 
 if [ $(uname) = "Darwin" ]; then
     cecho "Setup Mac installation..."
@@ -30,7 +31,7 @@ else
     sudo apt-get install -y curl git zsh vim golang python \
         python-dev build-essential
 
-    wget https://bootstrap.pypa.io/get-pip.py -O - | sudo python
+    wget $GETPIP -O - | sudo python
 fi
 
 cecho "Upgrade PIP..."
@@ -49,10 +50,15 @@ git clone https://github.com/dethi/all.git $SCRIPTPATH
 
 # OhMyZsh
 cecho "Install OhMyZsh"
-wget $OHMYZSH -O /tmp/com.github.dethi.all.ohmyzsh-install.sh
-# It removes the last line, ". ~/.zshrc", so the installation can continue
-sed -i.tmp '$d' /tmp/com.github.dethi.all.ohmyzsh-install.sh
-sh /tmp/com.github.dethi.all.ohmyzsh-install.sh
+(
+	TMP="/tmp/com.github.dethi.all.ohmyzsh-install.sh"
+	wget $OHMYZSH -O $TMP
+	
+	# Remove the last two lines, so the installation can continue
+	awk -v n=2 'NR>n{print line[NR%n]};{line[NR%n]=$0}' > $TMP
+	sh $TMP
+	rm -f ~/.zshrc
+)
 
 echo "Generate links..."
 ln -s "$SCRIPTPATH/dotfiles/.gitconfig" ~/.gitconfig
