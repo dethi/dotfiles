@@ -29,7 +29,7 @@ else
 fi
 
 mkdir -p ~/Documents/Git
-git clone git@github.com:dethi/all.git ~/Documents/Git/all
+git clone https://github.com/dethi/all.git ~/Documents/Git/all
 
 pip install --upgrade pip setuptools
 pip install --upgrade flake8 virtualenv
