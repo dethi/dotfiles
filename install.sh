@@ -19,23 +19,21 @@ if [ $(uname) = "Darwin" ]; then
 
     brew update
     brew install wget git zsh macvim go python
+    pip install --upgrade pip setuptools
 else
     echo "Setup Linux configuration..."
 
     sudo apt-get update
     sudo apt-get upgrade -y
     sudo apt-get install -y curl git zsh vim golang python \
-        python-dev build-essential
+        python-dev python-pip build-essential
 
-    # PIP
-    wget https://bootstrap.pypa.io/get-pip.py -O - | sudo python
 fi
+
+pip install --upgrade flake8 virtualenv
 
 mkdir -p ~/Documents/Git
 git clone https://github.com/dethi/all.git ~/Documents/Git/all
-
-pip install --upgrade pip setuptools
-pip install --upgrade flake8 virtualenv
 
 # OhMyZsh
 sh -c "$(curl -fsSL $OHMYZSH)"
