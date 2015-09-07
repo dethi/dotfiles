@@ -16,6 +16,7 @@ if [ $(uname) = "Darwin" ]; then
     echo | ruby -e "$(curl -fsSL $HOMEBREW)"
 
     brew update
+    brew install python3 # Install it first, so pip refer to python2.7
     brew install wget git zsh macvim go python cmake
 else
     echo "--> Setup Linux configuration..."
