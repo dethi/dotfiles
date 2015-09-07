@@ -39,13 +39,11 @@ sudo pip install --upgrade flake8 virtualenv
 
 cecho "Clone dotfiles repository..."
 (
-    mkdir -p ~/Documents/Git
-    cd ~/Documents/Git
-    git clone https://github.com/dethi/all.git
+    git clone https://github.com/dethi/all.git $SCRIPTPATH
 
     # Little hack to clone the repository without my SSH key and then
     # reset origin to use SSH because I hate writing my username/password
-    cd all
+    cd $SCRIPTPATH
     git remote set-url origin git@github.com:dethi/all.git
 )
 
@@ -58,24 +56,29 @@ sh $TMP
 rm -f ~/.zshrc
 
 echo "Generate links..."
-ln "$SCRIPTPATH/dotfiles/.gitconfig" ~/.gitconfig
-ln "$SCRIPTPATH/dotfiles/.gitignore_global" ~/.gitignore_global
-ln "$SCRIPTPATH/dotfiles/.vimrc" ~/.vimrc
-ln "$SCRIPTPATH/dotfiles/.zprofile" ~/.zprofile
-ln "$SCRIPTPATH/dotfiles/.zshrc" ~/.zshrc
+(
+    cd $HOME
+    ln -sf "$SCRIPTPATH/dotfiles/.gitconfig" .gitconfig
+    ln -sf "$SCRIPTPATH/dotfiles/.gitignore_global" .gitignore_global
+    ln -sf "$SCRIPTPATH/dotfiles/.vimrc" .vimrc
+    ln -sf "$SCRIPTPATH/dotfiles/.zprofile" .zprofile
+    ln -sf "$SCRIPTPATH/dotfiles/.zshrc" .zshrc
 
-mkdir -p ~/.vim/colors
-ln "$SCRIPTPATH/dotfiles/.vim/colors/distinguished.vim" \
-    ~/.vim/colors/distinguished.vim
+    mkdir -p ~/.vim/colors
+    ln -sf "$SCRIPTPATH/dotfiles/.vim/colors/distinguished.vim" \
+        .vim/colors/distinguished.vim
 
-mkdir -p ~/.oh-my-zsh/themes
-ln "$SCRIPTPATH/.oh-my-zsh/themes/dethi.zsh-theme" \
-    ~/.oh-my-zsh/themes/dethi.zsh-theme
+    mkdir -p ~/.oh-my-zsh/themes
+    ln -sf "$SCRIPTPATH/.oh-my-zsh/themes/dethi.zsh-theme" \
+        .oh-my-zsh/themes/dethi.zsh-theme
+)
 
 cecho "Install Vundle..."
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
+sleep 3
 vim +GoInstallBinaries +qall
+sleep 3
 
 cecho "Configure YouCompleteMe..."
 python ~/.vim/bundle/YouCompleteMe/install.py \
