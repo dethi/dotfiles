@@ -1,0 +1,144 @@
+\documentclass[11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[unicode=true]{hyperref}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry}
+\geometry{a4paper}
+\geometry{top=2.5cm, bottom=2.5cm, left=4.5cm, right=3.5cm}
+\usepackage{graphicx}
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage{amssymb,amsmath}
+\usepackage{xcolor}
+\usepackage{sistyle}
+\usepackage{shorttoc}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{listings}
+
+\hypersetup{breaklinks=true,
+            pdfauthor={Thibault Deutsch (deutsc\_t); Another member (pseudo)},
+            pdftitle={Rapport de projet},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=black,
+            pdfborder={0 0 0}}
+
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{4}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy}
+\fancyhead[L]{Groupe Name}
+\fancyhead[C]{}
+\fancyhead[R]{Project Name}
+
+\title{Rapport de projet}
+\author{Thibault Deutsch (deutsc\_t) \and another member (pseudo)}
+\date{25 décembre 2014}
+
+\dottedcontents{chapter}%
+  [\dimexpr 10mm]
+  {}
+  {\dimexpr 10mm}
+  {3.2mm}
+
+\dottedcontents{figure}%
+  [\dimexpr 15mm]
+  {}
+  {\dimexpr 15mm}
+  {3.2mm}
+
+\begin{document}
+\lstset{frame=shadowbox, rulesepcolor=\color{lightgray}}
+\renewcommand{\labelitemi}{$\bullet$}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+\flushright
+\includegraphics[width = 4.5cm]{epita.png}\\[0.5cm] % Include a department/university logo
+
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+\textsc{\Large Rapport de projet}\\[0.15cm] % Major heading such as course name
+\textsc{\large 2\up{ème} année du cycle préparatoire}\\[3cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+\center
+\HRule \\[0.5cm]
+{\Huge \bfseries Project Name}\\[0.3cm] % Project Name
+% \includegraphics[width = 10cm]{logo.png}\\[1cm] % or Project Logo
+\textsc{\Large Subtitle}\\[0.1cm] % Project Subtitle
+\large 10 décembre 2014\\[0.1cm] % Date
+\HRule \\[3cm]
+
+\Large
+\textbf{Thibault Deutsch} (\emph{deutsc\_t}) \\
+\textbf{Another member} (\emph{pseudo})\\[2cm]
+
+%----------------------------------------------------------------------------------------
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+
+\chapter{Introduction}
+
+\newpage
+
+% \chapter{A chapter}
+%
+% \section{A section}
+%
+% \subsection{A subsection}
+%
+% \begin{figure}[htbp]
+% \centering
+% \includegraphics[width=10cm]{path/to/img}
+% \caption{Caption of the image}
+% \end{figure}
+%
+% \begin{itemize}
+% \item First item
+% \item Second item
+% \end{itemize}
+
+\chapter{Conclusion}
+
+A conclusion.
+
+\newpage
+\pagenumbering{Roman}
+\part*{Annexes}
+
+\newpage
+\listoffigures
+
+\end{document}
