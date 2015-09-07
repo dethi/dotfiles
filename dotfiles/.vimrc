@@ -1,5 +1,3 @@
-set shell=$SHELL
-
 " =======================================
 " Plugins
 " =======================================
@@ -32,6 +30,9 @@ Plugin 'Valloric/YouCompleteMe' " Autocompletation
 
 Plugin 'mattn/emmet-vim' " Zen coding
 Plugin 'airblade/vim-gitgutter' " +/- for Git
+
+Plugin 'fatih/vim-go' " Golang
+" You need to call :GoInstallBinaries the first time
 
 call vundle#end()
 filetype plugin indent on

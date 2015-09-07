@@ -21,14 +21,14 @@ if [ $(uname) = "Darwin" ]; then
     echo | ruby -e "$(curl -fsSL $HOMEBREW)"
 
     brew update
-    brew install wget git zsh macvim go python
+    brew install wget git zsh macvim go python cmake
 else
     cecho "Setup Linux configuration..."
 
     sudo apt-get update
     sudo apt-get upgrade -y
     sudo apt-get install -y curl git zsh vim golang python \
-        python-dev build-essential
+        python-dev build-essential cmake
 
     wget $GETPIP -O - | sudo python
 fi
@@ -57,7 +57,7 @@ rm -f ~/.zshrc
 
 echo "Generate links..."
 (
-    cd $HOME
+    cd ~
     ln -sf "$SCRIPTPATH/dotfiles/.gitconfig" .gitconfig
     ln -sf "$SCRIPTPATH/dotfiles/.gitignore_global" .gitignore_global
     ln -sf "$SCRIPTPATH/dotfiles/.vimrc" .vimrc
@@ -65,23 +65,24 @@ echo "Generate links..."
     ln -sf "$SCRIPTPATH/dotfiles/.zshrc" .zshrc
 
     mkdir -p ~/.vim/colors
+    cd ~/.vim/colors
     ln -sf "$SCRIPTPATH/dotfiles/.vim/colors/distinguished.vim" \
-        .vim/colors/distinguished.vim
+        distinguished.vim
 
     mkdir -p ~/.oh-my-zsh/themes
-    ln -sf "$SCRIPTPATH/.oh-my-zsh/themes/dethi.zsh-theme" \
-        .oh-my-zsh/themes/dethi.zsh-theme
+    cd ~/.oh-my-zsh/themes
+    ln -sf "$SCRIPTPATH/.oh-my-zsh/themes/dethi.zsh-theme" dethi.zsh-theme
 )
 
 cecho "Install Vundle..."
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
-sleep 3
-vim +GoInstallBinaries +qall
-sleep 3
 
 cecho "Configure YouCompleteMe..."
 python ~/.vim/bundle/YouCompleteMe/install.py \
     --clang-completer --gocode-completer
+
+cecho "Download Go Binaries..."
+vim +GoInstallBinaries +qall
 
 cecho "Done :)"
