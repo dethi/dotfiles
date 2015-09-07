@@ -114,7 +114,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>250 170 924 485 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>710 391 570 386 0 0 1280 777 </string>
+	<string>173 386 570 386 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 49 640 728 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -123,6 +123,8 @@
 	<string>194 326 570 451 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
 	<string>215 321 570 451 0 0 1280 777 </string>
+	<key>NeverWarnAboutShortLivedSessions_786D0AE0-AFF2-450F-9C31-D68E7A25E9B7</key>
+	<true/>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -853,10 +855,12 @@
 			<string>/Users/tinux</string>
 		</dict>
 	</array>
+	<key>NoSyncNeverRemindPrefsChangesCopy</key>
+	<true/>
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>462890507.70075703</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>463191297.58378702</real>
+	<real>463280286.11772603</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -919,7 +923,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-09-06T00:17:51Z</date>
+	<date>2015-09-07T00:57:56Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>

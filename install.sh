@@ -7,23 +7,18 @@ GETPIP="https://bootstrap.pypa.io/get-pip.py"
 HOMEBREW="https://raw.githubusercontent.com/Homebrew/install/master/install"
 OHMYZSH="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
 
-cecho() {
-    # Colorized echo
-    printf "\e[0;32m%s\e[0m\n" "$1"
-}
-
 # Ask for the sudo password
 sudo echo "Thanks."
 
 if [ $(uname) = "Darwin" ]; then
-    cecho "Setup Mac installation..."
+    echo "Setup Mac installation..."
 
     echo | ruby -e "$(curl -fsSL $HOMEBREW)"
 
     brew update
     brew install wget git zsh macvim go python cmake
 else
-    cecho "Setup Linux configuration..."
+    echo "Setup Linux configuration..."
 
     sudo apt-get update
     sudo apt-get upgrade -y
@@ -33,11 +28,11 @@ else
     wget $GETPIP -O - | sudo python
 fi
 
-cecho "Upgrade PIP..."
+echo "Upgrade PIP..."
 sudo pip install --upgrade pip setuptools
 sudo pip install --upgrade flake8 virtualenv
 
-cecho "Clone dotfiles repository..."
+echo "Clone dotfiles repository..."
 (
     git clone https://github.com/dethi/all.git $SCRIPTPATH
 
@@ -47,7 +42,7 @@ cecho "Clone dotfiles repository..."
     git remote set-url origin git@github.com:dethi/all.git
 )
 
-cecho "Install OhMyZsh"
+echo "Install OhMyZsh"
 TMP="/tmp/com.github.dethi.all.ohmyzsh-install.sh"
 wget $OHMYZSH -O "$TMP.bak"
 # Remove the last two lines, so the installation can continue
@@ -73,15 +68,17 @@ echo "Generate links..."
     ln -s "$SCRIPTPATH/dotfiles/.oh-my-zsh/themes/dethi.zsh-theme" dethi.zsh-theme
 )
 
-cecho "Install Vundle..."
+echo "Install Vundle..."
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
-cecho "Configure YouCompleteMe..."
+echo "Configure YouCompleteMe..."
 python $HOME/.vim/bundle/YouCompleteMe/install.py --clang-completer \
     --gocode-completer
 
-cecho "Download Go Binaries..."
+echo "Download Go Binaries..."
+export GOPATH="$HOME/Documents/gocode"
+export PATH="$HOME/Documents/gocode/bin:$PATH"
 vim +GoInstallBinaries +qall
 
-cecho "Done :)"
+echo "Done :)"
