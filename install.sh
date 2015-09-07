@@ -2,7 +2,7 @@
 
 set -e
 
-SCRIPTPATH="~/Documents/Git/all"
+SCRIPTPATH="$HOME/Documents/Git/all"
 GETPIP="https://bootstrap.pypa.io/get-pip.py"
 HOMEBREW="https://raw.githubusercontent.com/Homebrew/install/master/install"
 OHMYZSH="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
@@ -53,12 +53,12 @@ wget $OHMYZSH -O "$TMP.bak"
 # Remove the last two lines, so the installation can continue
 awk -v n=2 'NR>n{print line[NR%n]};{line[NR%n]=$0}' "$TMP.bak" > $TMP
 sh $TMP
-rm -f ~/.zshrc
+rm -f $HOME/.zshrc
 
 echo "Generate links..."
 (
     cd $HOME
-    mkdir -p ~/Documents/gocode
+    mkdir -p $HOME/Documents/gocode
 
     ln -s "$SCRIPTPATH/dotfiles/.gitconfig" .gitconfig
     ln -s "$SCRIPTPATH/dotfiles/.gitignore_global" .gitignore_global
@@ -66,19 +66,19 @@ echo "Generate links..."
     ln -s "$SCRIPTPATH/dotfiles/.zprofile" .zprofile
     ln -s "$SCRIPTPATH/dotfiles/.zshrc" .zshrc
 
-    mkdir -p ~/.vim/colors && cd ~/.vim/colors
+    mkdir -p $HOME/.vim/colors && cd $HOME/.vim/colors
     ln -s "$SCRIPTPATH/dotfiles/.vim/colors/distinguished.vim" distinguished.vim
 
-    mkdir -p ~/.oh-my-zsh/themes && cd ~/.oh-my-zsh/themes
-    ln -s "$SCRIPTPATH/.oh-my-zsh/themes/dethi.zsh-theme" dethi.zsh-theme
+    mkdir -p $HOME/.oh-my-zsh/themes && cd $HOME/.oh-my-zsh/themes
+    ln -s "$SCRIPTPATH/dotfiles/.oh-my-zsh/themes/dethi.zsh-theme" dethi.zsh-theme
 )
 
 cecho "Install Vundle..."
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 cecho "Configure YouCompleteMe..."
-python ~/.vim/bundle/YouCompleteMe/install.py --clang-completer \
+python $HOME/.vim/bundle/YouCompleteMe/install.py --clang-completer \
     --gocode-completer
 
 cecho "Download Go Binaries..."
