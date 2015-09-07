@@ -1,16 +1,24 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="dethi"
-plugins=(git osx brew extract jump docker docker-compose sudo)
+
+plugins=(git extract jump docker docker-compose sudo)
+if [ $(uname) = "Darwin" ]; then
+    plugins+=(osx brew)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
 export EDITOR='vim'
 
-# Path
-export PATH=$HOME/Dropbox/Scripts:$PATH # Dropbox script
-export PATH=$PATH:/usr/local/opt/go/libexec/bin # Go
+if [ -d "$HOME/Dropbox/Scripts" ]; then
+    export PATH=$HOME/Dropbox/Scripts:$PATH
+fi
+
+if [ -d "$HOME/Documents/gocode" ]; then
+    export GOPATH=$HOME/Documents/gocode
+    export PATH=$GOPATH/bin:$PATH
+fi
 
 # Alias
 alias avenv="source ./env/bin/activate"

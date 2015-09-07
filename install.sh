@@ -8,7 +8,7 @@ HOMEBREW="https://raw.githubusercontent.com/Homebrew/install/master/install"
 OHMYZSH="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
 
 cecho() {
-	# Colorized echo
+    # Colorized echo
     printf "\e[0;32m%s\e[0m\n" "$1"
 }
 
@@ -57,21 +57,20 @@ rm -f ~/.zshrc
 
 echo "Generate links..."
 (
-    cd ~
-    ln -sf "$SCRIPTPATH/dotfiles/.gitconfig" .gitconfig
-    ln -sf "$SCRIPTPATH/dotfiles/.gitignore_global" .gitignore_global
-    ln -sf "$SCRIPTPATH/dotfiles/.vimrc" .vimrc
-    ln -sf "$SCRIPTPATH/dotfiles/.zprofile" .zprofile
-    ln -sf "$SCRIPTPATH/dotfiles/.zshrc" .zshrc
+    cd $HOME
+    mkdir -p ~/Documents/gocode
 
-    mkdir -p ~/.vim/colors
-    cd ~/.vim/colors
-    ln -sf "$SCRIPTPATH/dotfiles/.vim/colors/distinguished.vim" \
-        distinguished.vim
+    ln -s "$SCRIPTPATH/dotfiles/.gitconfig" .gitconfig
+    ln -s "$SCRIPTPATH/dotfiles/.gitignore_global" .gitignore_global
+    ln -s "$SCRIPTPATH/dotfiles/.vimrc" .vimrc
+    ln -s "$SCRIPTPATH/dotfiles/.zprofile" .zprofile
+    ln -s "$SCRIPTPATH/dotfiles/.zshrc" .zshrc
 
-    mkdir -p ~/.oh-my-zsh/themes
-    cd ~/.oh-my-zsh/themes
-    ln -sf "$SCRIPTPATH/.oh-my-zsh/themes/dethi.zsh-theme" dethi.zsh-theme
+    mkdir -p ~/.vim/colors && cd ~/.vim/colors
+    ln -s "$SCRIPTPATH/dotfiles/.vim/colors/distinguished.vim" distinguished.vim
+
+    mkdir -p ~/.oh-my-zsh/themes && cd ~/.oh-my-zsh/themes
+    ln -s "$SCRIPTPATH/.oh-my-zsh/themes/dethi.zsh-theme" dethi.zsh-theme
 )
 
 cecho "Install Vundle..."
@@ -79,8 +78,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 cecho "Configure YouCompleteMe..."
-python ~/.vim/bundle/YouCompleteMe/install.py \
-    --clang-completer --gocode-completer
+python ~/.vim/bundle/YouCompleteMe/install.py --clang-completer \
+    --gocode-completer
 
 cecho "Download Go Binaries..."
 vim +GoInstallBinaries +qall
