@@ -8,17 +8,17 @@ HOMEBREW="https://raw.githubusercontent.com/Homebrew/install/master/install"
 OHMYZSH="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
 
 # Ask for the sudo password
-sudo echo "Thanks."
+sudo echo "--> Thanks."
 
 if [ $(uname) = "Darwin" ]; then
-    echo "Setup Mac installation..."
+    echo "--> Setup Mac installation..."
 
     echo | ruby -e "$(curl -fsSL $HOMEBREW)"
 
     brew update
     brew install wget git zsh macvim go python cmake
 else
-    echo "Setup Linux configuration..."
+    echo "--> Setup Linux configuration..."
 
     sudo apt-get update
     sudo apt-get upgrade -y
@@ -28,11 +28,11 @@ else
     wget $GETPIP -O - | sudo python
 fi
 
-echo "Upgrade PIP..."
+echo "--> Upgrade PIP..."
 sudo pip install --upgrade pip setuptools
 sudo pip install --upgrade flake8 virtualenv
 
-echo "Clone dotfiles repository..."
+echo "--> Clone dotfiles repository..."
 (
     git clone https://github.com/dethi/all.git $SCRIPTPATH
 
@@ -42,7 +42,7 @@ echo "Clone dotfiles repository..."
     git remote set-url origin git@github.com:dethi/all.git
 )
 
-echo "Install OhMyZsh"
+echo "--> Install OhMyZsh"
 TMP="/tmp/com.github.dethi.all.ohmyzsh-install.sh"
 wget $OHMYZSH -O "$TMP.bak"
 # Remove the last two lines, so the installation can continue
@@ -50,35 +50,35 @@ awk -v n=2 'NR>n{print line[NR%n]};{line[NR%n]=$0}' "$TMP.bak" > $TMP
 sh $TMP
 rm -f $HOME/.zshrc
 
-echo "Generate links..."
+echo "--> Generate links..."
 (
     cd $HOME
     mkdir -p $HOME/Documents/gocode
 
-    ln -s "$SCRIPTPATH/dotfiles/.gitconfig" .gitconfig
-    ln -s "$SCRIPTPATH/dotfiles/.gitignore_global" .gitignore_global
-    ln -s "$SCRIPTPATH/dotfiles/.vimrc" .vimrc
-    ln -s "$SCRIPTPATH/dotfiles/.zprofile" .zprofile
-    ln -s "$SCRIPTPATH/dotfiles/.zshrc" .zshrc
+    ln -sf "$SCRIPTPATH/dotfiles/.gitconfig" .gitconfig
+    ln -sf "$SCRIPTPATH/dotfiles/.gitignore_global" .gitignore_global
+    ln -sf "$SCRIPTPATH/dotfiles/.vimrc" .vimrc
+    ln -sf "$SCRIPTPATH/dotfiles/.zprofile" .zprofile
+    ln -sf "$SCRIPTPATH/dotfiles/.zshrc" .zshrc
 
     mkdir -p $HOME/.vim/colors && cd $HOME/.vim/colors
-    ln -s "$SCRIPTPATH/dotfiles/.vim/colors/distinguished.vim" distinguished.vim
+    ln -sf "$SCRIPTPATH/dotfiles/.vim/colors/distinguished.vim" distinguished.vim
 
     mkdir -p $HOME/.oh-my-zsh/themes && cd $HOME/.oh-my-zsh/themes
-    ln -s "$SCRIPTPATH/dotfiles/.oh-my-zsh/themes/dethi.zsh-theme" dethi.zsh-theme
+    ln -sf "$SCRIPTPATH/dotfiles/.oh-my-zsh/themes/dethi.zsh-theme" dethi.zsh-theme
 )
 
-echo "Install Vundle..."
+echo "--> Install Vundle..."
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
-echo "Configure YouCompleteMe..."
+echo "--> Configure YouCompleteMe..."
 python $HOME/.vim/bundle/YouCompleteMe/install.py --clang-completer \
     --gocode-completer
 
-echo "Download Go Binaries..."
+echo "--> Download Go Binaries..."
 export GOPATH="$HOME/Documents/gocode"
 export PATH="$HOME/Documents/gocode/bin:$PATH"
 vim +GoInstallBinaries +qall
 
-echo "Done :)"
+echo "--> Done :)"
