@@ -45,13 +45,26 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" Disable checker for LateX
+let g:syntastic_tex_checkers=[]
 
-" Disable YCM for Ruby
-let g:ycm_filetype_specific_completion_to_disable = {'ruby': 1}
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'tex': 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1
+      \}
+let g:ycm_complete_in_strings = 0
 
 " Remap Emmet leader
 let g:user_emmet_leader_key = '<C-E>'
-
 " Enable Emmet only for HTML/CSS
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall

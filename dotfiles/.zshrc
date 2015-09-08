@@ -11,18 +11,20 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='vim'
 
+export PATH="/usr/local/sbin:$PATH"
+
 if [ -d "$HOME/Dropbox/Scripts" ]; then
-    export PATH=$HOME/Dropbox/Scripts:$PATH
+    export PATH="$HOME/Dropbox/Scripts:$PATH"
 fi
 
 if [ -d "$HOME/Documents/gocode" ]; then
-    export GOPATH=$HOME/Documents/gocode
-    export PATH=$GOPATH/bin:$PATH
+    export GOPATH="$HOME/Documents/gocode"
+    export PATH="$GOPATH/bin:$PATH"
 fi
 
 # Alias
 alias avenv="source ./env/bin/activate"
-alias rmpyc="find . -type f -name \"*.pyc\" -delete"
+alias rmpyc="find . \( -name \"*.pyc\" -or -name \"__pycache__\" \) -delete"
 
 # Env file
 if [ -f $HOME/.env ]; then
