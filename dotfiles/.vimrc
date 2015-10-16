@@ -200,12 +200,12 @@ set viminfo^=%
 " Always show the status line
 set laststatus=2
 
+" Change invisible character when :set list
+set listchars=eol:¬
+
 " =======================================
 " Mapping
 " =======================================
-
-" Remap VIM 0 to first non-blank character
-map 0 ^
 
 " Map <space> to search
 nmap <space> /

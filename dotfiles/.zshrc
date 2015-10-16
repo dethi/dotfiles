@@ -9,7 +9,8 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='vim'
+export EDITOR="vim"
+export NNTPSERVER="news.epita.fr"
 
 export PATH="/usr/local/sbin:$PATH"
 
@@ -25,6 +26,10 @@ fi
 # Alias
 alias avenv="source ./env/bin/activate"
 alias rmpyc="find . \( -name \"*.pyc\" -or -name \"__pycache__\" \) -delete"
+
+alias gds="git diff --staged"
+alias epigcc="gcc -std=c99 -pedantic -Wall -Wextra -g"
+alias rsync="rsync -avz --exclude='*.o' --exclude='*.so' --exclude='.git'"
 
 # Env file
 if [ -f $HOME/.env ]; then

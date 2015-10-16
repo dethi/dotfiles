@@ -24,7 +24,7 @@ else
     sudo apt-get update
     sudo apt-get upgrade -y
     sudo apt-get install -y curl git zsh vim golang python \
-        python-dev build-essential cmake
+        python-dev build-essential cmake gdb valgrind
 
     wget $GETPIP -O - | sudo python
 fi
@@ -55,6 +55,7 @@ echo "--> Generate links..."
 (
     cd $HOME
     mkdir -p $HOME/Documents/gocode
+    mkdir -p $HOME/.vim/undo
 
     ln -sf "$SCRIPTPATH/dotfiles/.gitconfig" .gitconfig
     ln -sf "$SCRIPTPATH/dotfiles/.gitignore_global" .gitignore_global
