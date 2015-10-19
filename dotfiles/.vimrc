@@ -176,11 +176,18 @@ set hid
 
 " Delete trailing white space on save
 func! DeleteTrailingWS()
-    exe "normal mz"
+    if exists('b:noDeleteTraillingWS')
+        return
+    endif
     %s/\s\+$//ge
-    exe "normal `z"
 endfunc
-autocmd BufWrite * :call DeleteTrailingWS()
+autocmd BufWritePre * :call DeleteTrailingWS()
+
+augroup mail_netiquette
+    autocmd!
+    autocmd FileType mail let b:noDeleteTraillingWS=1
+    autocmd FileType mail setlocal cc=72 tw=70 list
+augroup END
 
 " Specify the behavior when switching between buffers
 try
