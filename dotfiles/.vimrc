@@ -87,7 +87,7 @@ set cursorline
 set hidden
 
 " Use Unix as the standard file type
-set ffs=unix,dos,mac
+set ffs=unix
 set encoding=utf8
 
 " Live reload file when edited from outside
