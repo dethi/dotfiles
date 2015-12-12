@@ -12,14 +12,16 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'bling/vim-airline' " Bottom bar
 Plugin 'tpope/vim-fugitive' " Git
-Plugin 'bling/vim-bufferline' " Buffer :ls
+Plugin 'airblade/vim-gitgutter' " +/- for Git
+Plugin 'Raimondi/delimitMate' " Autoclose delimiter
+Plugin 'mattn/emmet-vim' " Zen coding
+Plugin 'godlygeek/tabular' " Automatic alignement, like = or \
+Plugin 'ctrlpvim/ctrlp.vim' " Full path fuzzy file finder
 
 " Javascript syntax, autoindent, autocompletation
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'marijnh/tern_for_vim'
-
-Plugin 'Raimondi/delimitMate' " Autoclose delimiter
 
 Plugin 'Syntastic' " Syntax checking
 " Your need to install flake8 for Python support
@@ -27,9 +29,6 @@ Plugin 'Syntastic' " Syntax checking
 Plugin 'Valloric/YouCompleteMe' " Autocompletation
 " You need to install CMake and then in the plugin folder:
 " ./install.sh --clang-completer --gocode-completer
-
-Plugin 'mattn/emmet-vim' " Zen coding
-Plugin 'airblade/vim-gitgutter' " +/- for Git
 
 Plugin 'fatih/vim-go' " Golang
 " You need to call :GoInstallBinaries the first time
@@ -46,7 +45,10 @@ let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " Disable checker for LateX
-let g:syntastic_tex_checkers=[]
+let g:syntastic_tex_checkers= []
+" Don't lag with vim-go
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['go']}
 
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
