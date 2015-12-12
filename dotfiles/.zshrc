@@ -29,6 +29,7 @@ alias rmpyc="find . \( -name \"*.pyc\" -or -name \"__pycache__\" \) -delete"
 
 alias gds="git diff --staged"
 alias epigcc="gcc -std=c99 -pedantic -Wall -Wextra -g"
+alias epig++="g++ -std=c++14 -pedantic -Wall -Wextra -g"
 alias rsync="rsync -avz --exclude='*.o' --exclude='*.so' --exclude='.git'"
 
 # Env file
