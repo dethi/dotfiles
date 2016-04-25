@@ -2,6 +2,7 @@
 
 set -e
 
+ME="tinux"
 SCRIPTPATH="$HOME/Documents/Git/all"
 GETPIP="https://bootstrap.pypa.io/get-pip.py"
 HOMEBREW="https://raw.githubusercontent.com/Homebrew/install/master/install"
@@ -16,8 +17,10 @@ if [ $(uname) = "Darwin" ]; then
     echo | ruby -e "$(curl -fsSL $HOMEBREW)"
 
     brew update
-    brew install python3 # Install it first, so pip refer to python2.7
-    brew install wget git zsh macvim go python cmake
+    brew install $(cat package.lst)
+
+    brew tap caskroom/cask
+    brew cask install java
 else
     echo "--> Setup Linux configuration..."
 
@@ -33,22 +36,25 @@ echo "--> Upgrade PIP..."
 sudo pip install --upgrade pip setuptools
 sudo pip install --upgrade flake8 virtualenv
 
+echo "--> Clean some directories..."
+rm -rf $SCRIPTPATH
+rm -rf $HOME/.vimc
+rm -rf $HOME/.oh-my-zsh
+
 echo "--> Clone dotfiles repository..."
 (
     git clone https://github.com/dethi/all.git $SCRIPTPATH
 
     # Little hack to clone the repository without my SSH key and then
     # reset origin to use SSH because I hate writing my username/password
-    cd $SCRIPTPATH
-    git remote set-url origin git@github.com:dethi/all.git
+    if [ $USER = $ME ]; then
+        cd $SCRIPTPATH
+        git remote set-url origin git@github.com:dethi/all.git
+    fi
 )
 
 echo "--> Install OhMyZsh"
-TMP="/tmp/com.github.dethi.all.ohmyzsh-install.sh"
-wget $OHMYZSH -O "$TMP.bak"
-# Remove the last two lines, so the installation can continue
-awk -v n=2 'NR>n{print line[NR%n]};{line[NR%n]=$0}' "$TMP.bak" > $TMP
-sh $TMP
+sh -c "$(curl -fsSL $OHMYZSH)"
 rm -f $HOME/.zshrc
 
 echo "--> Generate links..."
@@ -57,14 +63,16 @@ echo "--> Generate links..."
     mkdir -p $HOME/Documents/gocode
     mkdir -p $HOME/.vim/undo
 
-    ln -sf "$SCRIPTPATH/dotfiles/.gitconfig" .gitconfig
-    ln -sf "$SCRIPTPATH/dotfiles/.gitignore_global" .gitignore_global
+    if [ $USER = $ME ]; then
+        ln -sf "$SCRIPTPATH/dotfiles/.gitconfig" .gitconfig
+        ln -sf "$SCRIPTPATH/dotfiles/.gitignore_global" .gitignore_global
+    else
+        echo "/!\ Please configure your ~/.gitconfig file!"
+    fi
+
     ln -sf "$SCRIPTPATH/dotfiles/.vimrc" .vimrc
     ln -sf "$SCRIPTPATH/dotfiles/.zprofile" .zprofile
     ln -sf "$SCRIPTPATH/dotfiles/.zshrc" .zshrc
-
-    mkdir -p $HOME/.vim/colors && cd $HOME/.vim/colors
-    ln -sf "$SCRIPTPATH/dotfiles/.vim/colors/distinguished.vim" distinguished.vim
 
     mkdir -p $HOME/.oh-my-zsh/themes && cd $HOME/.oh-my-zsh/themes
     ln -sf "$SCRIPTPATH/dotfiles/.oh-my-zsh/themes/dethi.zsh-theme" dethi.zsh-theme
