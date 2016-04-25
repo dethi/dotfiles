@@ -10,6 +10,8 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'morhetz/gruvbox' " Colorscheme
+
 Plugin 'bling/vim-airline' " Bottom bar
 Plugin 'tpope/vim-fugitive' " Git
 Plugin 'airblade/vim-gitgutter' " +/- for Git
@@ -33,6 +35,10 @@ Plugin 'Valloric/YouCompleteMe' " Autocompletation
 Plugin 'fatih/vim-go' " Golang
 " You need to call :GoInstallBinaries the first time
 
+Plugin 'majutsushi/tagbar' " Tagbar
+Plugin 'elixir-lang/vim-elixir' " Elixir
+Plugin 'mustache/vim-mustache-handlebars' " Handlebar template
+
 call vundle#end()
 filetype plugin indent on
 
@@ -49,6 +55,8 @@ let g:syntastic_tex_checkers= []
 " Don't lag with vim-go
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['go']}
+
+let g:go_fmt_command = "goimports"
 
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
@@ -80,7 +88,7 @@ set history=700
 set number
 set background=dark
 set t_Co=256 " 256 Color
-colorscheme distinguished
+colorscheme gruvbox
 
 " Highlight the current line
 set cursorline
@@ -122,7 +130,7 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-autocmd FileType html,css,js,ruby,yaml :setlocal sw=2 ts=2
+autocmd FileType html,css,javascript,ruby,yaml,elixir,html.handlebars :setlocal sw=2 ts=2
 
 set ai " Auto indent
 set si " Smart indent
