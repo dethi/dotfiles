@@ -6,7 +6,6 @@ ME="tinux"
 SCRIPTPATH="$HOME/Documents/Git/all"
 GETPIP="https://bootstrap.pypa.io/get-pip.py"
 HOMEBREW="https://raw.githubusercontent.com/Homebrew/install/master/install"
-OHMYZSH="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
 
 # Ask for the sudo password
 sudo echo "--> Thanks."
@@ -54,8 +53,8 @@ echo "--> Clone dotfiles repository..."
 )
 
 echo "--> Install OhMyZsh"
-sh -c "$(curl -fsSL $OHMYZSH)"
-rm -f $HOME/.zshrc
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+chsh -s $(grep /zsh$ /etc/shells | tail -1)
 
 echo "--> Generate links..."
 (
