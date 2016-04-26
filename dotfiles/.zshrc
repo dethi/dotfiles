@@ -26,11 +26,15 @@ fi
 # Alias
 alias avenv="source ./env/bin/activate"
 alias rmpyc="find . \( -name \"*.pyc\" -or -name \"__pycache__\" \) -delete"
-
 alias gds="git diff --staged"
+
+alias rsync="rsync -avz --exclude='*.o' --exclude='*.so' --exclude='.git'"
+alias tmux="tmux -2"
+alias lynx="lynx -useragent='Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.6.0'"
+alias weather="curl wttr.in"
+
 alias epigcc="gcc -std=c99 -pedantic -Wall -Wextra -g"
 alias epig++="g++ -std=c++14 -pedantic -Wall -Wextra -g"
-alias rsync="rsync -avz --exclude='*.o' --exclude='*.so' --exclude='.git'"
 
 # Env file
 if [ -f $HOME/.env ]; then
