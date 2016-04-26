@@ -6,5 +6,10 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✖%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
-PROMPT='${return_status} %{$fg[green]%}[%n] %{$fg[yellow]%}%c %{$fg[blue]%}$(git_prompt_info)%{$reset_color%} %s'
+local hostname=""
+if [ -n "$SSH_CLIENT" ]; then
+    hostname="@%m"
+fi
+
+PROMPT='${return_status} %{$fg[green]%}[%n${hostname}] %{$fg[yellow]%}%c %{$fg[blue]%}$(git_prompt_info)%{$reset_color%} %s'
 RPROMPT='${return_code}'
