@@ -11,7 +11,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'morhetz/gruvbox' " Colorscheme
-
 Plugin 'bling/vim-airline' " Bottom bar
 Plugin 'tpope/vim-fugitive' " Git
 Plugin 'airblade/vim-gitgutter' " +/- for Git
@@ -19,6 +18,7 @@ Plugin 'Raimondi/delimitMate' " Autoclose delimiter
 Plugin 'mattn/emmet-vim' " Zen coding
 Plugin 'godlygeek/tabular' " Automatic alignement, like = or \
 Plugin 'ctrlpvim/ctrlp.vim' " Full path fuzzy file finder
+Plugin 'majutsushi/tagbar' " Tagbar
 
 " Javascript syntax, autoindent, autocompletation
 Plugin 'jelera/vim-javascript-syntax'
@@ -35,9 +35,11 @@ Plugin 'Valloric/YouCompleteMe' " Autocompletation
 Plugin 'fatih/vim-go' " Golang
 " You need to call :GoInstallBinaries the first time
 
-Plugin 'majutsushi/tagbar' " Tagbar
 Plugin 'elixir-lang/vim-elixir' " Elixir
 Plugin 'mustache/vim-mustache-handlebars' " Handlebar template
+
+Plugin 'luochen1990/rainbow' " Rainbow Parentheses for Lisp
+Plugin 'rust-lang/rust.vim' " Rust
 
 call vundle#end()
 filetype plugin indent on
@@ -72,12 +74,22 @@ let g:ycm_filetype_blacklist = {
       \ 'mail' : 1
       \}
 let g:ycm_complete_in_strings = 0
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_rust_src_path = '~/.vim/rustc-1.11.0/src'
 
 " Remap Emmet leader
 let g:user_emmet_leader_key = '<C-E>'
 " Enable Emmet only for HTML/CSS
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+    \ 'separately': {
+    \   '*': 0,
+    \   'lisp': {},
+    \   }
+    \}
 
 " =======================================
 " Configurations
@@ -130,7 +142,7 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-autocmd FileType html,css,javascript,ruby,yaml,elixir,html.handlebars :setlocal sw=2 ts=2
+autocmd FileType html,css,yaml,elixir,html.handlebars :setlocal sw=2 ts=2
 
 set ai " Auto indent
 set si " Smart indent

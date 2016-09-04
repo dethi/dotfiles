@@ -73,6 +73,9 @@ echo "--> Generate links..."
     ln -sf "$SCRIPTPATH/dotfiles/.zprofile" .zprofile
     ln -sf "$SCRIPTPATH/dotfiles/.zshrc" .zshrc
 
+    cd $HOME/.vim
+    ln -sf "$SCRIPTPATH/dotfiles/.ycm_extra_conf.py" .ycm_extra_conf.py
+
     mkdir -p $HOME/.oh-my-zsh/themes && cd $HOME/.oh-my-zsh/themes
     ln -sf "$SCRIPTPATH/dotfiles/.oh-my-zsh/themes/dethi.zsh-theme" dethi.zsh-theme
 )

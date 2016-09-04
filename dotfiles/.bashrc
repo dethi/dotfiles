@@ -20,7 +20,6 @@ alias gd="git diff"
 alias gds="git diff --staged"
 alias gp="git push"
 
-alias seedbox='transmission-remote localhost:9091'
 alias tmux='tmux -2'
 
 export EDITOR=vim

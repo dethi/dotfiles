@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="dethi"
 
-plugins=(git extract jump docker docker-compose sudo)
+plugins=(git extract jump docker golang sudo)
 if [ $(uname) = "Darwin" ]; then
     plugins+=(osx brew)
 fi
