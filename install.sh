@@ -30,10 +30,6 @@ else
     wget $GETPIP -O - | sudo python
 fi
 
-echo "--> Upgrade PIP..."
-sudo pip install --upgrade pip setuptools
-sudo pip install --upgrade flake8 virtualenv
-
 echo "--> Clean some directories..."
 rm -rf $SCRIPTPATH
 rm -rf $HOME/.vimc
@@ -54,6 +50,10 @@ echo "--> Clone dotfiles repository..."
         brew install $(cat package.lst)
     fi
 )
+
+echo "--> Upgrade PIP..."
+sudo pip install --upgrade pip setuptools
+sudo pip install --upgrade flake8 virtualenv
 
 echo "--> Install OhMyZsh"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
