@@ -24,22 +24,23 @@ Plugin 'majutsushi/tagbar' " Tagbar
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'marijnh/tern_for_vim'
+" Plugin 'posva/vim-vue'
 
-Plugin 'Syntastic' " Syntax checking
-" Your need to install flake8 for Python support
+" Plugin 'Syntastic' " Syntax checking
+" Required flake8 for Python support
 
 Plugin 'Valloric/YouCompleteMe' " Autocompletation
-" You need to install CMake and then in the plugin folder:
+" Required CMake. Please run the following command:
 " ./install.sh --clang-completer --gocode-completer
 
 Plugin 'fatih/vim-go' " Golang
-" You need to call :GoInstallBinaries the first time
+" Required to run :GoInstallBinaries
 
-Plugin 'elixir-lang/vim-elixir' " Elixir
-Plugin 'mustache/vim-mustache-handlebars' " Handlebar template
+" Plugin 'elixir-lang/vim-elixir' " Elixir
+" Plugin 'mustache/vim-mustache-handlebars' " Handlebar template
 
 Plugin 'luochen1990/rainbow' " Rainbow Parentheses for Lisp
-Plugin 'rust-lang/rust.vim' " Rust
+" Plugin 'rust-lang/rust.vim' " Rust
 
 call vundle#end()
 filetype plugin indent on
@@ -75,13 +76,13 @@ let g:ycm_filetype_blacklist = {
       \}
 let g:ycm_complete_in_strings = 0
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_rust_src_path = '~/.vim/rustc-1.11.0/src'
+" let g:ycm_rust_src_path = '~/.vim/rustc-1.11.0/src'
 
 " Remap Emmet leader
 let g:user_emmet_leader_key = '<C-E>'
 " Enable Emmet only for HTML/CSS
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,vue EmmetInstall
 
 let g:rainbow_active = 1
 let g:rainbow_conf = {
@@ -142,7 +143,7 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-autocmd FileType html,css,yaml,elixir,html.handlebars :setlocal sw=2 ts=2
+autocmd FileType html,css,javascript,yaml,elixir,vue :setlocal sw=2 ts=2
 
 set ai " Auto indent
 set si " Smart indent
