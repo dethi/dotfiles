@@ -297,7 +297,9 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>769 110 445 265 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>526 491 606 456 0 0 1920 1057 </string>
+	<string>188 309 606 456 0 0 1280 777 </string>
+	<key>NSWindow Frame SharedPreferences</key>
+	<string>269 214 770 381 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>226 130 570 387 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
@@ -1050,6 +1052,8 @@
 	<string>72ECC5E0-8529-4C55-871B-1C5391A951C0</string>
 	<key>NoSyncLastTipTime</key>
 	<real>489587201.25247502</real>
+	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
+	<true/>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -1138,7 +1142,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-07-12T22:04:25Z</date>
+	<date>2016-09-18T23:38:42Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -1146,7 +1150,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowPaneTitles</key>
 	<false/>
 	<key>SmartPlacement</key>
@@ -1188,6 +1192,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.4</string>
+	<string>3.0.9</string>
 </dict>
 </plist>
