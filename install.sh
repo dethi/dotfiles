@@ -59,7 +59,7 @@ chsh -s $(grep /zsh$ /etc/shells | tail -1)
 echo "--> Generate links..."
 (
     cd $HOME
-    mkdir -p $HOME/Documents/gocode
+    mkdir -p $HOME/go
     mkdir -p $HOME/.vim/undo
 
     if [ $USER = $ME ]; then
@@ -89,8 +89,8 @@ python $HOME/.vim/bundle/YouCompleteMe/install.py --clang-completer \
     --gocode-completer
 
 echo "--> Download Go Binaries..."
-export GOPATH="$HOME/Documents/gocode"
-export PATH="$HOME/Documents/gocode/bin:$PATH"
+export GOPATH="$HOME/gp"
+export PATH="$GOPATH/bin:$PATH"
 vim +GoInstallBinaries +qall
 
 echo "--> Done :)"
