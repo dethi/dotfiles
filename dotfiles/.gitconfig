@@ -8,3 +8,6 @@
 	default = matching
 [color]
 	ui = auto
+[alias]
+	please = push --force-with-lease
+	shorty = status --short --branch
