@@ -45,7 +45,7 @@ echo "--> Clone dotfiles repository..."
     if [ $USER = $ME ]; then
         git remote set-url origin git@github.com:dethi/all.git
     fi
-    
+
     if [ $(uname) = "Darwin" ]; then
         brew install $(cat package.lst)
     fi
@@ -92,7 +92,7 @@ python $HOME/.vim/bundle/YouCompleteMe/install.py --clang-completer \
     --gocode-completer
 
 echo "--> Download Go Binaries..."
-export GOPATH="$HOME/gp"
+export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 vim +GoInstallBinaries +qall
 
