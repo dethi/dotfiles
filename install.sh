@@ -16,7 +16,6 @@ if [ $(uname) = "Darwin" ]; then
     echo | ruby -e "$(curl -fsSL $HOMEBREW)"
 
     brew update
-    brew install $(cat package.lst)
 
     brew tap caskroom/cask
     brew cask install java
@@ -31,10 +30,6 @@ else
     wget $GETPIP -O - | sudo python
 fi
 
-echo "--> Upgrade PIP..."
-sudo pip install --upgrade pip setuptools
-sudo pip install --upgrade flake8 virtualenv
-
 echo "--> Clean some directories..."
 rm -rf $SCRIPTPATH
 rm -rf $HOME/.vimc
@@ -43,14 +38,22 @@ rm -rf $HOME/.oh-my-zsh
 echo "--> Clone dotfiles repository..."
 (
     git clone https://github.com/dethi/all.git $SCRIPTPATH
+    cd $SCRIPTPATH
 
     # Little hack to clone the repository without my SSH key and then
     # reset origin to use SSH because I hate writing my username/password
     if [ $USER = $ME ]; then
-        cd $SCRIPTPATH
         git remote set-url origin git@github.com:dethi/all.git
     fi
+    
+    if [ $(uname) = "Darwin" ]; then
+        brew install $(cat package.lst)
+    fi
 )
+
+echo "--> Upgrade PIP..."
+sudo pip install --upgrade pip setuptools
+sudo pip install --upgrade flake8 virtualenv
 
 echo "--> Install OhMyZsh"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
