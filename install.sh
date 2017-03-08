@@ -32,7 +32,7 @@ fi
 
 echo "--> Clean some directories..."
 rm -rf $SCRIPTPATH
-rm -rf $HOME/.vimc
+rm -rf $HOME/.vimrc
 rm -rf $HOME/.oh-my-zsh
 
 echo "--> Clone dotfiles repository..."
