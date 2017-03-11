@@ -13,7 +13,7 @@ export EDITOR="vim"
 export GOPATH="$HOME/go"
 
 # Alias
-alias avenv="source ./env/bin/activate"
+alias avenv="source ./venv/bin/activate"
 alias rmpyc="find . \( -name \"*.pyc\" -or -name \"__pycache__\" \) -delete"
 alias gds="git diff --staged"
 alias tmux="tmux -2"
@@ -37,4 +37,7 @@ fi
 
 if [ -d "$GOPATH" ]; then
     export PATH="$GOPATH/bin:$PATH"
+
+    setopt auto_cd
+    cdpath=($GOPATH/src/github.com)
 fi
