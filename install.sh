@@ -75,6 +75,7 @@ echo "--> Generate links..."
     ln -sf "$SCRIPTPATH/dotfiles/.vimrc" .vimrc
     ln -sf "$SCRIPTPATH/dotfiles/.zprofile" .zprofile
     ln -sf "$SCRIPTPATH/dotfiles/.zshrc" .zshrc
+    ln -sf "$SCRIPTPATH/dotfiles/.npmrc" .npmrc
 
     cd $HOME/.vim
     ln -sf "$SCRIPTPATH/dotfiles/.ycm_extra_conf.py" .ycm_extra_conf.py
