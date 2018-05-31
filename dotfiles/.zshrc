@@ -1,4 +1,3 @@
-# Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="dethi"
 
@@ -13,12 +12,15 @@ export EDITOR="vim"
 export GOPATH="$HOME/go"
 
 # Alias
-alias avenv="source ./venv/bin/activate"
+alias reload="source $HOME/.zshrc"
+alias avenv="source ./.venv/bin/activate"
 alias rmpyc="find . \( -name \"*.pyc\" -or -name \"__pycache__\" \) -delete"
 alias gds="git diff --staged"
 alias tmux="tmux -2"
 alias weather="curl wttr.in"
-alias artisan="php artisan"
+alias json="python -m json.tool"
+alias xml="xmllint --format -"
+alias rmbranch="git branch --merged master | grep -v \"\* master\" | xargs -n 1 git branch -d"
 
 # Env file
 if [ -f $HOME/.env ]; then
@@ -31,13 +33,20 @@ if [ -d "$HOME/Dropbox/Scripts" ]; then
     export PATH="$HOME/Dropbox/Scripts:$PATH"
 fi
 
-if [ -d "$HOME/.composer/vendor/bin" ]; then
-    export PATH="$HOME/.composer/vendor/bin:$PATH"
-fi
-
 if [ -d "$GOPATH" ]; then
     export PATH="$GOPATH/bin:$PATH"
 
     setopt auto_cd
     cdpath=($GOPATH/src/github.com)
 fi
+
+function lb() {
+    mkdir -p ~/logbook
+    $EDITOR ~/logbook/$(date '+%Y-%m-%d').md
+}
+
+# Enable IEx history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+# Create virtualenv localy
+export PIPENV_VENV_IN_PROJECT=1

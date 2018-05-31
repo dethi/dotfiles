@@ -15,32 +15,21 @@ Plugin 'bling/vim-airline' " Bottom bar
 Plugin 'tpope/vim-fugitive' " Git
 Plugin 'airblade/vim-gitgutter' " +/- for Git
 Plugin 'Raimondi/delimitMate' " Autoclose delimiter
-Plugin 'mattn/emmet-vim' " Zen coding
 Plugin 'godlygeek/tabular' " Automatic alignement, like = or \
 Plugin 'ctrlpvim/ctrlp.vim' " Full path fuzzy file finder
 Plugin 'majutsushi/tagbar' " Tagbar
-
-" Javascript syntax, autoindent, autocompletation
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'pangloss/vim-javascript'
-Plugin 'marijnh/tern_for_vim'
-" Plugin 'posva/vim-vue'
 
 " Plugin 'Syntastic' " Syntax checking
 " Required flake8 for Python support
 
 Plugin 'Valloric/YouCompleteMe' " Autocompletation
 " Required CMake. Please run the following command:
-" ./install.sh --clang-completer --gocode-completer
+" ./install.sh --gocode-completer
 
 Plugin 'fatih/vim-go' " Golang
 " Required to run :GoInstallBinaries
 
-" Plugin 'elixir-lang/vim-elixir' " Elixir
-" Plugin 'mustache/vim-mustache-handlebars' " Handlebar template
-
-Plugin 'luochen1990/rainbow' " Rainbow Parentheses for Lisp
-" Plugin 'rust-lang/rust.vim' " Rust
+Plugin 'elixir-lang/vim-elixir' " Elixir
 
 call vundle#end()
 filetype plugin indent on
@@ -54,12 +43,15 @@ let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " Disable checker for LateX
-let g:syntastic_tex_checkers= []
+let g:syntastic_tex_checkers = []
 " Don't lag with vim-go
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['go']}
 
 let g:go_fmt_command = "goimports"
+" let g:go_auto_sameids = 1
+let g:go_auto_type_info = 1
+let g:go_addtags_transform = "snakecase"
 
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
@@ -76,21 +68,6 @@ let g:ycm_filetype_blacklist = {
       \}
 let g:ycm_complete_in_strings = 0
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-" let g:ycm_rust_src_path = '~/.vim/rustc-1.11.0/src'
-
-" Remap Emmet leader
-let g:user_emmet_leader_key = '<C-E>'
-" Enable Emmet only for HTML/CSS
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,vue EmmetInstall
-
-let g:rainbow_active = 1
-let g:rainbow_conf = {
-    \ 'separately': {
-    \   '*': 0,
-    \   'lisp': {},
-    \   }
-    \}
 
 " =======================================
 " Configurations
@@ -135,7 +112,7 @@ catch
 endtry
 
 " Set red line
-set cc=80,100
+set cc=80,120
 
 " Use spaces instead of tabs
 set expandtab
@@ -143,7 +120,7 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-autocmd FileType html,css,javascript,yaml,elixir,vue :setlocal sw=2 ts=2
+autocmd FileType yaml,elixir :setlocal sw=2 ts=2
 
 set ai " Auto indent
 set si " Smart indent
@@ -205,12 +182,6 @@ func! DeleteTrailingWS()
     %s/\s\+$//ge
 endfunc
 autocmd BufWritePre * :call DeleteTrailingWS()
-
-augroup mail_netiquette
-    autocmd!
-    autocmd FileType mail let b:noDeleteTraillingWS=1
-    autocmd FileType mail setlocal cc=72 tw=70 list
-augroup END
 
 " Specify the behavior when switching between buffers
 try

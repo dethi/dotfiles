@@ -11,3 +11,5 @@
 [alias]
 	please = push --force-with-lease
 	shorty = status --short --branch
+[pull]
+	rebase = true
