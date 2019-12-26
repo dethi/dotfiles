@@ -1,0 +1,62 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+brew "archey"
+brew "cloc"
+brew "cmake"
+brew "detox"
+brew "elixir"
+brew "exiftool"
+brew "git"
+brew "go"
+brew "handbrake"
+brew "htop"
+brew "httpie"
+brew "jhead"
+brew "jq"
+brew "mas"
+brew "pgcli"
+brew "pypy3"
+brew "qrencode"
+brew "ranger"
+brew "ssh-copy-id"
+brew "subliminal"
+brew "tmux"
+brew "tree"
+brew "upx"
+brew "vim"
+brew "wget"
+brew "youtube-dl"
+brew "zsh"
+brew "zstd"
+cask "1password"
+cask "appcleaner"
+cask "arq"
+cask "coconutbattery"
+cask "docker"
+cask "dropbox"
+cask "firefox"
+cask "google-chrome"
+cask "imageoptim"
+cask "iterm2"
+cask "onecast"
+cask "onyx"
+cask "paw"
+cask "shiftit"
+cask "spotify"
+cask "textmate"
+cask "transmission"
+cask "visual-studio-code"
+cask "vlc"
+cask "whatsapp"
+mas "Color Picker", id: 641027709
+mas "DaisyDisk", id: 411643860
+mas "Deckset", id: 847496013
+mas "Keynote", id: 409183694
+mas "Notability", id: 736189492
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Photos Duplicate Cleaner", id: 592704001
+mas "Pixelmator", id: 407963104
+mas "Things", id: 904280696
+mas "WireGuard", id: 1451685025

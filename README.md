@@ -1,11 +1,5 @@
-### Via curl
+# dotfiles
 
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/dethi/all/master/install.sh)"
-```
-
-### Via wget
-
-```bash
-sh -c "$(wget https://raw.githubusercontent.com/dethi/all/master/install.sh -O -)"
-```
+Setup:
+- clone repo
+- run `./setup.sh`

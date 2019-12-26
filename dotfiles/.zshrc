@@ -1,10 +1,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="dethi"
 
-plugins=(git extract jump docker golang sudo)
-if [ $(uname) = "Darwin" ]; then
-    plugins+=(osx brew)
-fi
+plugins=(osx git extract jump docker golang sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -15,11 +12,11 @@ export GOPATH="$HOME/go"
 alias reload="source $HOME/.zshrc"
 alias avenv="source ./.venv/bin/activate"
 alias rmpyc="find . \( -name \"*.pyc\" -or -name \"__pycache__\" \) -delete"
+alias gd="git diff"
 alias gds="git diff --staged"
 alias tmux="tmux -2"
 alias weather="curl wttr.in"
 alias json="python -m json.tool"
-alias xml="xmllint --format -"
 alias rmbranch="git branch --merged master | grep -v \"\* master\" | xargs -n 1 git branch -d"
 
 # Env file
@@ -36,8 +33,8 @@ fi
 if [ -d "$GOPATH" ]; then
     export PATH="$GOPATH/bin:$PATH"
 
-    setopt auto_cd
-    cdpath=($GOPATH/src/github.com)
+    # setopt auto_cd
+    # cdpath=($GOPATH/src/github.com)
 fi
 
 function lb() {

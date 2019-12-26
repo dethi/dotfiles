@@ -17,14 +17,12 @@ Plugin 'airblade/vim-gitgutter' " +/- for Git
 Plugin 'Raimondi/delimitMate' " Autoclose delimiter
 Plugin 'godlygeek/tabular' " Automatic alignement, like = or \
 Plugin 'ctrlpvim/ctrlp.vim' " Full path fuzzy file finder
-Plugin 'majutsushi/tagbar' " Tagbar
 
 " Plugin 'Syntastic' " Syntax checking
 " Required flake8 for Python support
 
 Plugin 'Valloric/YouCompleteMe' " Autocompletation
-" Required CMake. Please run the following command:
-" ./install.sh --gocode-completer
+" Required CMake
 
 Plugin 'fatih/vim-go' " Golang
 " Required to run :GoInstallBinaries
