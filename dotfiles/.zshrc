@@ -1,3 +1,6 @@
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="dethi"
 
@@ -18,6 +21,7 @@ alias tmux="tmux -2"
 alias weather="curl wttr.in"
 alias json="python -m json.tool"
 alias rmbranch="git branch --merged master | grep -v \"\* master\" | xargs -n 1 git branch -d"
+alias j="jump"
 
 # Env file
 if [ -f $HOME/.env ]; then
