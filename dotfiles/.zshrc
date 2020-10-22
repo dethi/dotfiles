@@ -22,6 +22,8 @@ alias weather="curl wttr.in"
 alias json="python -m json.tool"
 alias rmbranch="git branch --merged master | grep -v \"\* master\" | xargs -n 1 git branch -d"
 alias j="jump"
+alias f="bat $(fzf)"
+alias k="kubectl"
 
 # Env file
 if [ -f $HOME/.env ]; then
@@ -51,3 +53,13 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 # Create virtualenv localy
 export PIPENV_VENV_IN_PROJECT=1
+export PIPENV_IGNORE_VIRTUALENVS=1
+
+function color() {
+  "$@" 2> >(while read line; do echo -e "\e[01;31m$line\e[0m" >&2; done)
+}
+
+function fingerprint() {
+    pubkeypath="$1"
+    ssh-keygen -E md5 -lf "$pubkeypath" | awk '{ print $2 }' | cut -c 5-
+}
