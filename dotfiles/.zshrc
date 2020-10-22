@@ -22,7 +22,7 @@ alias weather="curl wttr.in"
 alias json="python -m json.tool"
 alias rmbranch="git branch --merged master | grep -v \"\* master\" | xargs -n 1 git branch -d"
 alias j="jump"
-alias f="bat $(fzf)"
+alias f='bat $(fzf)'
 alias k="kubectl"
 
 # Env file
