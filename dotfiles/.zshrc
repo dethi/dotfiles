@@ -4,7 +4,7 @@ export LANG=en_US.UTF-8
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="dethi"
 
-plugins=(osx git extract jump docker golang sudo)
+plugins=(osx git extract jump docker golang sudo asdf)
 
 source $ZSH/oh-my-zsh.sh
 
