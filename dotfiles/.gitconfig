@@ -13,3 +13,5 @@
 	shorty = status --short --branch
 [pull]
 	rebase = true
+[init]
+	defaultBranch = trunk
